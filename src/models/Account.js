@@ -22,11 +22,11 @@ const Account = sequelizer.define("Account",{
         allowNull: false
     },
     loans:{
-        type: DataTypes.Array(DataTypes.STRING)
+        type: DataTypes.ARRAY(DataTypes.STRING)
     },
     lastThrityDayTransactions:{
         type: DataTypes.STRING
     }
-}, {timestamps: true})
+}, {timestamps: false})
 
 module.exports = {Account}

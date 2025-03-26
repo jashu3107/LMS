@@ -1,7 +1,5 @@
 const response = ({ req, res, code, message, data }) => {
-    return res.json({
-        req,
-        res,
+    return res.status(code).json({
         code,
         message,
         data

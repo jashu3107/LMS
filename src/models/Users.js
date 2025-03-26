@@ -30,11 +30,11 @@ const Users = sequelizer.define("Users",{
         allowNull: false
     },
     loans:{
-        type: DataTypes.Array(DataTypes.STRING)
+        type: DataTypes.ARRAY(DataTypes.STRING)
     },
     loan_flag:{
-        type: DataType.BOOLEAN
+        type: DataTypes.BOOLEAN
     }
-}, {timestamps: true});
+}, {timestamps: false});
 
 module.exports = {Users};
