@@ -4,7 +4,7 @@ const {Users} = require("./Users.js");
 const {Account} = require("./Account.js");
 const {Vendor} = require("./Vendor.js")
 
-const Loan = sequelizer.define("Loan",{
+const Loan = sequelizer.define("loans",{
     loan_id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -27,7 +27,7 @@ const Loan = sequelizer.define("Loan",{
         }
     },
     vendor_id:{
-        type: DataTypes.Integer,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references:{
             model: Vendor,
@@ -42,6 +42,6 @@ const Loan = sequelizer.define("Loan",{
         type: DataTypes.STRING(50),
         allowNull: false
     }
-},{timestamps: true});
+},{timestamps: false});
 
 module.exports = {Loan}

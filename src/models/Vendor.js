@@ -1,9 +1,9 @@
 const {sequelizer} = require("../config/db.js")
 const {DataTypes} = require("sequelize")
 
-const Vendor = sequelize.define("Vendor",{
+const Vendor = sequelizer.define("vendors",{
     vendor_id:{
-        type: DataTypes.Integer,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false
     },
@@ -15,6 +15,6 @@ const Vendor = sequelize.define("Vendor",{
         type: DataTypes.STRING,
         allowNull: false
     }
-},{timestamps:true})
+},{timestamps:false})
 
 module.exports = {Vendor}

@@ -1,7 +1,7 @@
 const {sequelizer} = require("../config/db.js");
 const {DataTypes} = require("sequelize");
 
-const Users = sequelizer.define("Users",{
+const Users = sequelizer.define("users",{
     user_id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -30,11 +30,11 @@ const Users = sequelizer.define("Users",{
         allowNull: false
     },
     loans:{
-        type: DataTypes.Array(DataTypes.STRING)
+        type: DataTypes.ARRAY(DataTypes.STRING)
     },
     loan_flag:{
-        type: DataType.BOOLEAN
+        type: DataTypes.BOOLEAN
     }
-}, {timestamps: true});
+}, {timestamps: false});
 
 module.exports = {Users};

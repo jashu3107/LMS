@@ -2,7 +2,7 @@ const {sequelizer} = require("../config/db.js")
 const {DataTypes} = require("sequelize")
 const {Users} = require("./Users.js");
 
-const Account = sequelizer.define("Account",{
+const Account = sequelizer.define("accounts",{
     account_number:{
         type: DataTypes.STRING(20),
         primaryKey: true,
@@ -22,11 +22,11 @@ const Account = sequelizer.define("Account",{
         allowNull: false
     },
     loans:{
-        type: DataTypes.Array(DataTypes.STRING)
+        type: DataTypes.ARRAY(DataTypes.STRING)
     },
     lastThrityDayTransactions:{
         type: DataTypes.STRING
     }
-}, {timestamps: true})
+}, {timestamps: false})
 
 module.exports = {Account}
