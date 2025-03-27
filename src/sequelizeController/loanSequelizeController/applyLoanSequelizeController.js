@@ -27,6 +27,7 @@ const applyLoanSequelizeController = async ({data, loggerPrefix})=>{
             data: loan
         }
     }catch(error){
+        console.log(error);
         logger.error(`${loggerPrefix} - Error in applyLoanSequelizeController: ${error}`);
         return {
             code: 500,

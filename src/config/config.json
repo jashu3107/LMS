@@ -1,22 +1,22 @@
 {
   "development": {
     "username": "postgres",
-    "password": "midhun1234",
-    "database": "LoanMS",
+    "password": "root",
+    "database": "LMS",
     "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
-    "password": "midhun1234",
-    "database": "LoanMS",
+    "password": "root",
+    "database": "LMS",
     "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
-    "password": "midhun1234",
-    "database": "LoanMS",
+    "password": "root",
+    "database": "LMS",
     "host": "localhost",
     "dialect": "postgres"
   }

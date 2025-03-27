@@ -1,5 +1,5 @@
-const {Account} = require("../models/Account.js");
-const logger = require("../helpers/logger.js");
+const {Account} = require("../../models/Account.js");
+const logger = require("../../helpers/logger.js");
 
 const updateLoansInAccountsSequelizeController = async ({data, loggerPrefix, transaction})=>{
     try{
