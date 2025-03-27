@@ -32,14 +32,16 @@ Loan.belongsTo(Users, {
     foreignKey: 'user_id',
     as: 'user'
 });
+
 Vendor.hasMany(Loan, {
     foreignKey: 'vendor_id',
     as: 'vendorLoans'
+
 });
 Loan.belongsTo(Vendor, {
     foreignKey: 'vendor_id',
-    as: 'vendor'
-});
+    as: 'vendor' 
+})
 
 module.exports = {
     Users, Account, Loan, Vendor
