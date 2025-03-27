@@ -8,14 +8,14 @@
   },
   "test": {
     "username": "postgres",
-    "password": "3107",
+    "password": "3017",
     "database": "LoanMS",
     "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
-    "password": "3107",
+    "password": "3017",
     "database": "LoanMS",
     "host": "localhost",
     "dialect": "postgres"
