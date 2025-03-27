@@ -4,27 +4,28 @@ const {response} = require("../../helpers/response.js");
 
 const getLoansController = async (req, res) => {
     const loggerPrefixName = "getLoansController";
-    try{
+    try {
         logger.info("trying to hit the api");
         const userData = await getLoansSequelizeController(req.query.vendor_id);
-        if(!userData){
+        if (userData.code === 404) {
             return response({
                 req,
                 res,
-                message: userData?.message,
-                code: userData?.code,
-                data: userData?.data
-            })
+                message: userData.message,
+                code: userData.code,
+                data: []
+            });
         }
+
         logger.info(`${loggerPrefixName} Loans fetched successfully`);
         return response({
             req,
             res,
-            message: userData?.message,
-            code: userData?.code,
-            data: userData?.data
-        })
-    }catch(error){
+            message: userData.message,
+            code: userData.code,
+            data: userData.data
+        });
+    } catch (error) {
         logger.error(`${loggerPrefixName} Error in fetching loans`);
         return response({   
             req,

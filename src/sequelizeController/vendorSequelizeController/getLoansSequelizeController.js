@@ -26,7 +26,7 @@ const getLoansSequelizeController = async (vendor_id) => {
             attributes: ['loan_id', 'loan_amount', 'loan_status', 'account_number', 'vendor_id']
         });
 
-        if(!loans || loans.length === 0){
+        if(loans.length === 0){
             logger.error(`${loggerPrefixName} No loans found for vendor`);
             return {
                 message: "No loans found for vendor",
