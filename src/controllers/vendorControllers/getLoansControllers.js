@@ -6,7 +6,7 @@ const getLoansController = async (req, res) => {
     try{
         logger.info(`${loggerPrefixName} Fetching loans for vendor started`);
         const userData = await getLoansSequelizeController(req.query.vendor_id);
-        if(!userData){
+        if(userData.code === 404){
             return response({
                 req,
                 res,

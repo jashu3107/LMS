@@ -6,7 +6,7 @@ const logger = require("../../helpers/logger.js");
 const getLoansSequelizeController = async (vendor_id) => {
     const loggerPrefixName = "getLoansSequelizeController";
     try{
-        logger.info(`${loggerPrefixName} Fetching loans for vendor started`);
+        logger.info(`${loggerPrefixName} Fetching loans started`);
         const loans = await Loan.findAll({
             where: {
                 vendor_id: vendor_id
