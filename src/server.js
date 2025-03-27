@@ -1,5 +1,4 @@
 const express = require('express');
-const { PORT } = require('./config');
 const logger = require('./helpers/logger');
 const config = require('./config/index.js');
 const app = express();
