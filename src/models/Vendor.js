@@ -1,7 +1,7 @@
 const {sequelizer} = require("../config/db.js")
 const {DataTypes} = require("sequelize")
 
-const Vendor = sequelizer.define("Vendor",{
+const Vendor = sequelizer.define("vendors",{
     vendor_id:{
         type: DataTypes.INTEGER,
         primaryKey: true,
