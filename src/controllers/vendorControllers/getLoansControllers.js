@@ -1,9 +1,12 @@
-const logger = require("../../config/logger");
+const logger = require("../../helpers/logger.js");
+const {getLoansSequelizeController} = require("../../sequelizeController/vendorSequelizeController/getLoansSequelizeController.js");
+const {response} = require("../../helpers/response.js");
 
-const getLoans = async (req, res) => {
-    const loggerPrefixName = "getLoans";
+const getLoansController = async (req, res) => {
+    const loggerPrefixName = "getLoansController";
     try{
-        const userData = await getLoansSequelizeController(req.body.vendor_id);
+        logger.info("trying to hit the api");
+        const userData = await getLoansSequelizeController(req.query.vendor_id);
         if(!userData){
             return response({
                 req,
@@ -13,7 +16,7 @@ const getLoans = async (req, res) => {
                 data: userData?.data
             })
         }
-        logger.info('${loggerPrefixName} Loans fetched successfully');
+        logger.info(`${loggerPrefixName} Loans fetched successfully`);
         return response({
             req,
             res,
@@ -22,7 +25,7 @@ const getLoans = async (req, res) => {
             data: userData?.data
         })
     }catch(error){
-        logger.error('${loggerPrefixName} Error in fetching loans');
+        logger.error(`${loggerPrefixName} Error in fetching loans`);
         return response({   
             req,
             res,
@@ -33,4 +36,4 @@ const getLoans = async (req, res) => {
     }
 }
 
-module.exports = {getLoans};
+module.exports = {getLoansController};
