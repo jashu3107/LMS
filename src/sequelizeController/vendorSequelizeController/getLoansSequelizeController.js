@@ -1,6 +1,4 @@
-const {Loan} = require("../../models/Loan.js");
-const {Users} = require("../../models/Users.js");
-const {Vendor} = require("../../models/Vendor.js");
+const {Loan, Users, Vendor} = require("../../models/associations.js");
 const logger = require("../../helpers/logger.js");
 
 const getLoansSequelizeController = async (vendor_id) => {
