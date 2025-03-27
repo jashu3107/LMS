@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-
+const {applyLoanforUserController} = require("../controllers/applyLoanforUserController.js");
+const {isTheUserEligibleForLoanValidation} = require("../validation/isTheUserEligibleForLoanValidation.js");
 const AddAccountFileUpload = require("../helpers/AccountUploadMiddleWare/AccountFileUpload.js");
 const AddAccountController = require("../controllers/AccountsController/AddAccountController.js");
 
@@ -25,17 +26,10 @@ const adminSignUp = require("../controllers/adminController/adminSignup.js");
 
 router.post("/signup", validationSignup, signupController); //DONE
 router.post("/signin", validationSignin, signinController); //DONE
-
 router.post("/adminsignin", validationSignin, adminSigninController);//DONE
-
-router.post(
-  "/addaccount",
-  protect,
-  AddAccountFileUpload,
-  AddAccountController
-);
-
-router.post("/adminsignup",adminSignUp);
+router.post( "/addaccount", protect, AddAccountFileUpload, AddAccountController);//DONE 
+router.post("/adminsignup",adminSignUp);//DONE
+router.post("/applyLoan",isTheUserEligibleForLoanValidation,applyLoanforUserController) 
 
 
 module.exports = router;
