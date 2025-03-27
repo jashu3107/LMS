@@ -1,0 +1,14 @@
+2025-03-27T11:13:42.352Z info: SERVER STARTED AT PORT - 5000
+2025-03-27T11:23:44.180Z info: SERVER STARTED AT PORT - 5000
+2025-03-27T11:26:16.303Z info: SERVER STARTED AT PORT - 5000
+2025-03-27T11:26:26.578Z info: Validation started
+2025-03-27T11:28:25.459Z info: SERVER STARTED AT PORT - 5000
+2025-03-27T11:28:30.163Z info: Validation started
+2025-03-27T11:28:30.164Z info: Validation completed
+2025-03-27T11:28:30.165Z info: updateLoanControllers-updateLoanController
+2025-03-27T11:28:30.166Z info: updateLoanController
+2025-03-27T11:28:30.166Z info: undefined-updateLoanSequelizeController
+2025-03-27T11:28:30.167Z info: Started Updating
+2025-03-27T11:28:30.183Z info: Loan Found
+2025-03-27T11:28:30.184Z info: You are authorized to update this loan
+2025-03-27T11:28:30.185Z info: Successfully processed the request

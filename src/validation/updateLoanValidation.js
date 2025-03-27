@@ -1,7 +1,7 @@
 const {body, query, validationResult} = require('express-validator');
 const {Loan} = require('../models/Loan.js');
 const {Users} = require('../models/Users.js');
-const{logger} = require('../helpers/logger.js');
+const logger = require('../helpers/logger.js');
 
 const updateLoanValidations = [
     query('loan_id')

@@ -1,8 +1,9 @@
 const { response } = require("../helpers/response.js");
 const { updateLoanSequelizeController } = require("../sequelizeController/updateLoanSequelizeController.js");
-const{logger} = require("../helpers/logger.js");
+const logger = require("../helpers/logger.js");
 
-const updateLoanController = async (req, res,loggerprefix) => {
+const updateLoanController = async (req, res) => {
+    const loggerprefix = "updateLoanControllers";
     logger.info(`${loggerprefix}-updateLoanController`);
     logger.info("updateLoanController");
     try {
@@ -21,6 +22,7 @@ const updateLoanController = async (req, res,loggerprefix) => {
                 data: {}
             });
         }
+        
         logger.info("Successfully processed the request");
         return response({
             req,
