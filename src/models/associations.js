@@ -1,7 +1,7 @@
 const {Users} = require("./Users.js");
 const {Account} = require("./Account.js");
 const {Loan} = require("./Loan.js");
-const {Vendor} = require("./Vendor.js")
+const {Vendor} = require("./Vendor.js");
 
 // user - acc one to one
 Users.hasOne(Account, {
