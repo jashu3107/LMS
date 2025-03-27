@@ -1,56 +1,52 @@
-const {Loan} = require("../../models");
-const {response} = require("../../utils/responseHandler");
-const logger = require("../../config/logger");
+const {Loan} = require("../../models/Loan.js");
+const {Users} = require("../../models/Users.js");
+const {Vendor} = require("../../models/Vendor.js");
+const logger = require("../../helpers/logger.js");
 
 const getLoansSequelizeController = async (vendor_id) => {
     const loggerPrefixName = "getLoansSequelizeController";
     try{
-        logger.info('${loggerPrefixName} Fetching loans for vendor started');
+        logger.info(`${loggerPrefixName} Fetching loans for vendor started`);
         const loans = await Loan.findAll({
             where: {
                 vendor_id: vendor_id
             },
             include: [
                 {
-                    model: User,
+                    model: Users,
                     as: 'user',
                     attributes: ['user_id', 'first_name', 'last_name', 'phone_number', 'email', 'loan_flag']
                 },
                 {
                     model: Vendor,
                     as: 'vendor',
-                    attributes: ['vendor_id'] 
+                    attributes: ['vendor_id', 'vendor_mail'] 
                 }
             ],
             attributes: ['loan_id', 'loan_amount', 'loan_status', 'account_number', 'vendor_id']
         });
-        if(!loans){
-            logger.error('${loggerPrefixName} No loans found for vendor');
-            return response({
-                req,
-                res,
-                message: loans?.message,    
-                code: loans?.code,
-                data: loans?.data
-            })
+
+        if(!loans || loans.length === 0){
+            logger.error(`${loggerPrefixName} No loans found for vendor`);
+            return {
+                message: "No loans found for vendor",
+                code: 404,
+                data: null
+            };
         }
-        logger.info('${loggerPrefixName} Loans fetched successfully');
-        return response({
-            req,
-            res,
-            message: loans?.message,
-            code: loans?.code,
-            data: loans?.data       
-        })
+        logger.info(`${loggerPrefixName} Loans fetched successfully`);
+        return {
+            message: "Loans fetched successfully",
+            code: 200,
+            data: loans
+        };
     }catch(error){
-        logger.error('${loggerPrefixName} Error in fetching loans');
-        return response({
-            req,
-            res,
-            message: error?.message,
-            code: error?.code,
-            data: error?.data
-        })
+        logger.error(`${loggerPrefixName} Error in fetching loans: ${error.message}`);
+        return {
+            message: error.message,
+            code: 500,
+            data: null
+        };
     }
 }
 
