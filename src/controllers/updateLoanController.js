@@ -1,30 +1,40 @@
-const {updateLoanSequelizeController} = require("../sequelizeController/updateLoanSequelizeController.js");
+const { response } = require("../helpers/response.js");
+const { updateLoanSequelizeController } = require("../sequelizeController/updateLoanSequelizeController.js");
+const{logger} = require("../helpers/logger.js");
 
-const updateLoanController = async (req, res) => {
+const updateLoanController = async (req, res,loggerprefix) => {
+    logger.info(`${loggerprefix}-updateLoanController`);
+    logger.info("updateLoanController");
     try {
-        const result = await updateLoanSequelizeController(
-            {user_id: req.body.user_id},
-            req.query.loan_id
-        );
+        const result = await updateLoanSequelizeController({
+            user_id: req.body.user_id,
+            loan_id: req.query.loan_id
+        });
 
-        if(!result) {
-            return res.status(500).json({
+        if (!result) {
+            logger.error("Failed to process the request");
+            return response({
+                req,
+                res,
                 code: 500,
                 message: "Failed to process the request",
                 data: {}
             });
         }
-
-       if(result.code == 404){
-        return res.status(404).json({
-            code: 404,
-            message: "Give the correct user_id to update the loan",
-            data: {}
+        logger.info("Successfully processed the request");
+        return response({
+            req,
+            res,
+            code: result.code,
+            message: result.message,
+            data: result.data
         });
-    }
 
     } catch(err) {
-        return res.status(500).json({
+        logger.error(err?.message || "Internal Server Error");
+        return response({
+            req,
+            res,
             code: 500,
             message: err?.message || "Internal Server Error",
             data: {}
@@ -32,4 +42,4 @@ const updateLoanController = async (req, res) => {
     }
 };
 
-module.exports = {updateLoanController};
+module.exports = { updateLoanController };
