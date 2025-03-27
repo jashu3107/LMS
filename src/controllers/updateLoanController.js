@@ -15,35 +15,13 @@ const updateLoanController = async (req, res) => {
             });
         }
 
-        if(req.body.user_id == 1) {
-            return res.status(201).json({
-                code: 201,
-                message: "Loan got Initiated",
-                data: {}
-            });
-        }
-
-        if(req.body.user_id == 2) {
-            return res.status(200).json({
-                code: 200,
-                message: "Loan got Approved",
-                data: {}
-            });
-        }
-
-        if(req.body.user_id == 3) {
-            return res.status(403).json({
-                code: 403,
-                message: "Loan got Rejected",
-                data: {}
-            });
-        }
-
+       if(result.code == 404){
         return res.status(404).json({
             code: 404,
             message: "Give the correct user_id to update the loan",
             data: {}
         });
+    }
 
     } catch(err) {
         return res.status(500).json({
